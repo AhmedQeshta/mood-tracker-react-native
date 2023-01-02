@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { FC } from 'react';
+import { BottomTabsNavigator } from './screens/BottomTabs.navigator';
+import { AppProvider } from './utils/providers/App.provider';
 
-export default function App() {
+const App: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hi I'm Ahmed Qeshta</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppProvider>
+      <NavigationContainer>
+        <BottomTabsNavigator />
+      </NavigationContainer>
+    </AppProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
