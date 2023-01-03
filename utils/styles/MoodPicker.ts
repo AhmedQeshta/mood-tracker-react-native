@@ -39,7 +39,7 @@ export const styleMoodPicker = StyleSheet.create({
     padding: 20,
     justifyContent: 'space-between',
     height: 230,
-    backgroundColor: themes.colorGray,
+    backgroundColor: themes.colorLightGray,
   },
   heading: {
     fontSize: 20,
@@ -48,7 +48,9 @@ export const styleMoodPicker = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
     color: themes.colorWhite,
+    fontFamily: themes.fontFamilyBold,
   },
+
   button: {
     backgroundColor: themes.colorPurple,
     width: 150,
@@ -56,6 +58,7 @@ export const styleMoodPicker = StyleSheet.create({
     marginTop: 20,
     alignSelf: 'center',
     padding: 10,
+    color: themes.colorWhite,
   },
   buttonText: {
     color: themes.colorWhite,

@@ -2,6 +2,8 @@ import { View, Text, Pressable, Image } from 'react-native';
 import { FC, useState, useCallback } from 'react';
 import { IMoodsOptions, MoodPickerProps } from '../utils/interfaces/moods';
 import { styleMoodPicker } from '../utils/styles/MoodPicker';
+import { themes } from '../utils/styles/themes';
+import { AppText } from './AppText';
 
 const imageSrc = require('../assets/butterflies.png');
 
@@ -30,6 +32,7 @@ export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
       <View style={styleMoodPicker.container}>
         <Image source={imageSrc} style={styleMoodPicker.image} />
         <Pressable style={styleMoodPicker.button} onPress={() => setHasSelected(false)}>
+          {/* <AppText fontFamily="bold">Back</AppText> */}
           <Text style={styleMoodPicker.buttonText}>Back</Text>
         </Pressable>
       </View>
@@ -39,6 +42,7 @@ export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
   return (
     <View style={styleMoodPicker.container}>
       <Text style={styleMoodPicker.heading}>How are you right now?</Text>
+
       <View style={styleMoodPicker.moodList}>
         {moodOptions?.map((option) => (
           <View key={option.emoji}>
@@ -58,6 +62,8 @@ export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
       </View>
       <Pressable style={styleMoodPicker.button} onPress={handleSelection}>
         <Text style={styleMoodPicker.buttonText}>Choose</Text>
+
+        {/* <AppText fontFamily="bold">Choose</AppText> */}
       </Pressable>
     </View>
   );

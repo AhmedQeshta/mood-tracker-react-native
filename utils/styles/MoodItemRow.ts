@@ -18,6 +18,7 @@ export const styleMoodItemRow = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    fontFamily: themes.fontFamilyBold
   },
   moodDescription: {
     fontSize: 18,

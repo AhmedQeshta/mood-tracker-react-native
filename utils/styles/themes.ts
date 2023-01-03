@@ -2,5 +2,12 @@ export const themes = {
   colorPurple: '#454C73',
   colorWhite: '#fff',
   colorLavender: '#87677B',
-  colorGray: '#00000033',
+  colorLightGray: '#00000033',
+  colorBlue: '#1D84B5',
+  colorGrey: '#8E9AAF',
+
+  // Fonts
+  fontFamilyBold: 'Kalam-Bold',
+  fontFamilyRegular: 'Kalam-Regular',
+  fontFamilyLight: 'Kalam-Light',
 };

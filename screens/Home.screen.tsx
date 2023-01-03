@@ -9,6 +9,7 @@ const imageUrl =
 
 export const Home: FC = () => {
   const { handleMoodSelection } = useAppContext();
+
   return (
     <ImageBackground source={{ uri: imageUrl }} style={styleHome.container}>
       <MoodPicker handleMoodSelection={handleMoodSelection} />
