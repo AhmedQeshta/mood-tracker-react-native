@@ -1,7 +1,9 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, Image } from 'react-native';
 import { FC, useState, useCallback } from 'react';
 import { IMoodsOptions, MoodPickerProps } from '../utils/interfaces/moods';
 import { styleMoodPicker } from '../utils/styles/MoodPicker';
+
+const imageSrc = require('../assets/butterflies.png');
 
 const moodOptions: IMoodsOptions[] = [
   { emoji: '👨‍💻', description: 'studious' },
@@ -13,13 +15,26 @@ const moodOptions: IMoodsOptions[] = [
 
 export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
   const [selectedMood, setSelectedMood] = useState<IMoodsOptions>();
+  const [hasSelected, setHasSelected] = useState(false);
 
   const handleSelection = useCallback(() => {
     if (selectedMood) {
       handleMoodSelection(selectedMood!);
       setSelectedMood(undefined);
+      setHasSelected(true);
     }
   }, [handleMoodSelection, selectedMood]);
+
+  if (hasSelected) {
+    return (
+      <View style={styleMoodPicker.container}>
+        <Image source={imageSrc} style={styleMoodPicker.image} />
+        <Pressable style={styleMoodPicker.button} onPress={() => setHasSelected(false)}>
+          <Text style={styleMoodPicker.buttonText}>Back</Text>
+        </Pressable>
+      </View>
+    );
+  }
 
   return (
     <View style={styleMoodPicker.container}>
