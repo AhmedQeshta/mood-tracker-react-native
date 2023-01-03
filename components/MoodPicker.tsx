@@ -2,10 +2,10 @@ import { View, Text, Pressable, Image } from 'react-native';
 import { FC, useState, useCallback } from 'react';
 import { IMoodsOptions, MoodPickerProps } from '../utils/interfaces/moods';
 import { styleMoodPicker } from '../utils/styles/MoodPicker';
-import { themes } from '../utils/styles/themes';
-import { AppText } from './AppText';
-
+import Reanimated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 const imageSrc = require('../assets/butterflies.png');
+
+const ReanimatedPressable = Reanimated.createAnimatedComponent(Pressable);
 
 const moodOptions: IMoodsOptions[] = [
   { emoji: '👨‍💻', description: 'studious' },
@@ -18,6 +18,14 @@ const moodOptions: IMoodsOptions[] = [
 export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
   const [selectedMood, setSelectedMood] = useState<IMoodsOptions>();
   const [hasSelected, setHasSelected] = useState(false);
+
+  const buttonStyle = useAnimatedStyle(
+    () => ({
+      opacity: selectedMood ? withTiming(1) : withTiming(0.5),
+      transform: [{ scale: selectedMood ? withTiming(1) : 0.8 }],
+    }),
+    [selectedMood],
+  );
 
   const handleSelection = useCallback(() => {
     if (selectedMood) {
@@ -32,7 +40,6 @@ export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
       <View style={styleMoodPicker.container}>
         <Image source={imageSrc} style={styleMoodPicker.image} />
         <Pressable style={styleMoodPicker.button} onPress={() => setHasSelected(false)}>
-          {/* <AppText fontFamily="bold">Back</AppText> */}
           <Text style={styleMoodPicker.buttonText}>Back</Text>
         </Pressable>
       </View>
@@ -60,11 +67,9 @@ export const MoodPicker: FC<MoodPickerProps> = ({ handleMoodSelection }) => {
           </View>
         ))}
       </View>
-      <Pressable style={styleMoodPicker.button} onPress={handleSelection}>
+      <ReanimatedPressable style={[styleMoodPicker.button, buttonStyle]} onPress={handleSelection}>
         <Text style={styleMoodPicker.buttonText}>Choose</Text>
-
-        {/* <AppText fontFamily="bold">Choose</AppText> */}
-      </Pressable>
+      </ReanimatedPressable>
     </View>
   );
 };

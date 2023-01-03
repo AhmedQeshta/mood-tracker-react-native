@@ -1,4 +1,4 @@
-import { IAppData } from "../interfaces/appContext";
+import { IAppData } from '../interfaces/appContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const dataKey = 'moodList';

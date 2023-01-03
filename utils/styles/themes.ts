@@ -5,6 +5,7 @@ export const themes = {
   colorLightGray: '#00000033',
   colorBlue: '#1D84B5',
   colorGrey: '#8E9AAF',
+  colorRed: '#FF0000',
 
   // Fonts
   fontFamilyBold: 'Kalam-Bold',

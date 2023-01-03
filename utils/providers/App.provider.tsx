@@ -6,6 +6,7 @@ import { getAppData, setAppData } from '../async-storage/moodList';
 const AppContext = createContext<IAppContext>({
   moodList: [],
   handleMoodSelection: () => {},
+  handleDeleteMood: () => {},
 });
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
@@ -25,6 +26,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
+  const handleDeleteMood = useCallback((mood: IMoodOptionWithTimestamp) => {
+    setMoodList((current) => {
+      const newValue = current?.filter((item) => item.timestamp !== mood.timestamp);
+      setAppData({ moodList: newValue });
+      return newValue;
+    });
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getAppData();
@@ -36,7 +45,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ moodList, handleMoodSelection }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ moodList, handleMoodSelection, handleDeleteMood }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

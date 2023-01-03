@@ -3,6 +3,13 @@ import { FC } from 'react';
 import { BottomTabsNavigator } from './screens/BottomTabs.navigator';
 import { AppProvider } from './utils/providers/App.provider';
 import { useFonts } from 'expo-font';
+import { Platform, UIManager } from 'react-native';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const App: FC = () => {
   const [fontsLoaded] = useFonts({

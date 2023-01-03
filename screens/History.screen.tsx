@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import {  SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView, ScrollView, Text } from 'react-native';
 import { useAppContext } from '../utils/providers/App.provider';
 import { MoodItemRow } from '../components/MoodItemRow';
+import { styleHistory } from '../utils/styles/historyScreen';
 
 export const History: FC = () => {
   const { moodList } = useAppContext();
@@ -9,9 +10,14 @@ export const History: FC = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        {moodList.map((item) => (
-          <MoodItemRow item={item} key={item.timestamp} />
-        ))}
+        {moodList?.length ? (
+          moodList
+            ?.slice()
+            ?.reverse()
+            ?.map((item) => <MoodItemRow item={item} key={item.timestamp} />)
+        ) : (
+          <Text style={styleHistory.notfound}>No moods to show</Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

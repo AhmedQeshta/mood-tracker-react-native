@@ -18,7 +18,7 @@ export const styleMoodItemRow = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    fontFamily: themes.fontFamilyBold
+    fontFamily: themes.fontFamilyBold,
   },
   moodDescription: {
     fontSize: 18,
@@ -28,5 +28,11 @@ export const styleMoodItemRow = StyleSheet.create({
   iconAndDescription: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  deleteText: {
+    color: themes.colorRed,
+    fontSize:12,
+    fontWeight: 'bold',
+    fontFamily: themes.fontFamilyBold,
   },
 });
