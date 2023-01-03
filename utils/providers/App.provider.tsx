@@ -1,25 +1,7 @@
 import { createContext, ReactNode, useCallback, useContext, useState, useEffect } from 'react';
-import { IAppContext, IAppData } from '../interfaces/appContext';
+import { IAppContext } from '../interfaces/appContext';
 import { IMoodOptionWithTimestamp, IMoodsOptions } from '../interfaces/moods';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const dataKey = 'moodList';
-
-const setAppData = async (appData: IAppData) => {
-  try {
-    await AsyncStorage.setItem(dataKey, JSON.stringify(appData));
-  } catch {}
-};
-
-const getAppData = async (): Promise<IAppData | null> => {
-  try {
-    const data = await AsyncStorage.getItem(dataKey);
-    if (data) {
-      return JSON.parse(data);
-    }
-  } catch {}
-  return null;
-};
+import { getAppData, setAppData } from '../async-storage/moodList';
 
 const AppContext = createContext<IAppContext>({
   moodList: [],

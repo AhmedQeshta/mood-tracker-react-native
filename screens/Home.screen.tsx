@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MoodPicker } from '../components/MoodPicker';
-import { MoodItemRow } from '../components/MoodItemRow';
 import { useAppContext } from '../utils/providers/App.provider';
 
 export const Home: FC = () => {
