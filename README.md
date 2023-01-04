@@ -9,6 +9,10 @@
 </div>
 
 ## 🔹 Preview
+<div align="center">
+  <img src="https://media.giphy.com/media/001iONjygJtPkSEd05/giphy.gif"></img>
+</div>
+
 
 ## 🔹User stories
  > 🔸 As a user
